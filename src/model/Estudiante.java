@@ -54,4 +54,8 @@ public class Estudiante {
             }
         }
     }
+
+    public int cuantosSemestres() {
+        return semestres.length;
+    }
 }

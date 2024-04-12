@@ -13,8 +13,8 @@ public class Controladora {
     	return profesor;
     }
 
-    public Curso crearCurso(String nombreCurso, int creditos, String facultad, Profesor profesor) {
-    	Curso curso = new Curso(nombreCurso, creditos, facultad, profesor);
+    public Curso crearCurso(String nombreCurso, int creditos, String facultad) {
+    	Curso curso = new Curso(nombreCurso, creditos, facultad);
     	return curso;
     }
 
@@ -32,8 +32,55 @@ public class Controladora {
     	return estudiante;
     }
 
+    public void agregarEstudiante(Estudiante estudiante) {
+        for (int i = 0; i < estudiantes.length; i++) {
+            if (estudiantes[i] == null) {
+                estudiantes[i] = estudiante;
+                break;
+            }
+        }
+    }
+
     public void asociarSemestreConEstudiante(Estudiante estudiante, Semestre semestre) {
     	estudiante.agregarSemestre(semestre);
+    }
+
+    public void asociarCursoConProfesor(Curso curso, Profesor profesor) {
+        curso.setProfesor(profesor);
+    }
+
+    public String listarEstudiante(int indice) {
+        if (indice >= 0 && indice < estudiantes.length && estudiantes[indice] != null) {
+            Estudiante estudiante = estudiantes[indice];
+            return "Nombre: " + estudiante.getNombre() + "\n" +
+                   "Edad: " + estudiante.getEdad() + "\n" +
+                   "Código de Estudiante: " + estudiante.getCodigoEstudiante();
+        } else {
+            return "";
+        }
+    }
+
+    public int obtenerCantidadEstudiantes() {
+        return estudiantes.length;
+    }
+
+    public Estudiante buscarEstudiantePorCodigo(String codigo) {
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante != null && estudiante.getCodigoEstudiante().equals(codigo)) {
+                return estudiante;
+            }
+        }
+        return null;
+    }
+
+    public String listarSemestre(int indice, Estudiante estudiante) {
+        Semestre[] semestresEstudiante = estudiante.getSemestres();
+        if (indice >= 0 && indice < estudiante.getSemestres().length && semestresEstudiante[indice] != null) {
+            Semestre semestre = semestresEstudiante[indice];
+            return "Nombre del periodo: " + semestre.getNombrePeriodo();
+        } else {
+            return "";
+        }
     }
 
 }

@@ -25,8 +25,8 @@ public class Executable {
 		while (!flag) {
 
 			System.out.println("\n \n Bienvenido al menu:\n");
-			System.out.println("Opciones:\n" + "1. Registrar profesor \n" + "2. Segunda opcion\n"
-					+ "3. Tercera opcion \n" + "4. Salir del programa");
+			System.out.println("Opciones:\n" + "1. Registrar estudiante \n" + "2. Imprimir estudiantes\n"
+					+ "3. Crear semestre a estudiante \n" + "4. Mostrar semestres de un estudiante \n" + "5. Salir del programa \n");
 
 			int option = reader.nextInt();
 
@@ -34,15 +34,18 @@ public class Executable {
 
 			switch (option) {
 					case 1:
-						registrarProfesor();
+						registrarEstudiante();
 						break;
 					case 2:
-						//segundaOpcion();
+						imprimirEstudiantes();
 						break;
 					case 3:
-						//terceraOpcion();
+						crearSemestreAEstudiante();
 						break;
 					case 4:
+						imprimirSemestresDeEstudiante();
+						break;
+					case 5:
 						flag = true;
 						System.exit(0);
 						break;
@@ -59,33 +62,92 @@ public class Executable {
 		Executable mainApp = new Executable();
 		mainApp.run(flag);
 	}
-	
-	public void registrarProfesor() {
+
+	public void registrarEstudiante() {
 		
-		String nombreProfe, cedulaProfe;
-		int edadProfe;
+		String nombreEstudiante, codigoEstudiante;
+		int edadEstudiante;
 		
-		System.out.println("Profesor, ingrese su nombre");
+		System.out.println("Ingrese nombre del estudiante: ");
 		
-		nombreProfe = reader.nextLine();
+		nombreEstudiante = reader.nextLine();
 		
-		System.out.println("Profesor, ingrese su edad");
+		System.out.println("Ingrese edad del estudiante: ");
 		
-		edadProfe = reader.nextInt();
+		edadEstudiante = reader.nextInt();
 		
 		reader.nextLine(); // Limpiar el buffer
 		
-		System.out.println("Profesor, ingrese su cedula");
+		System.out.println("Ingrese codigo del estudiante: ");
 		
-		cedulaProfe = reader.nextLine();
+		codigoEstudiante = reader.nextLine();
 		
-		System.out.println("Datos del profe: \n" + 
-		"Nombre: " + nombreProfe + "\n" + 
-		"Edad: " + edadProfe + "\n" + 
-		"Cedula: " + cedulaProfe);
+		//System.out.println("Datos del estudiante: \n" + 
+		//"Nombre: " + nombreEstudiante + "\n" + 
+		//"Edad: " + edadEstudiante + "\n" + 
+		//"Codigo: " + codigoEstudiante);
 		
 		
-		//cont.crearProfesor(
+		cont.agregarEstudiante(cont.crearEstudiante(nombreEstudiante, edadEstudiante, codigoEstudiante));
+	}
+
+	public void imprimirEstudiantes() {
+
+		int cantidadEstudiantes = cont.obtenerCantidadEstudiantes();
+
+		for(int i = 0; i <= cantidadEstudiantes; i++) {
+			String impresionEstudiante = cont.listarEstudiante(i);
+			if(impresionEstudiante != "") {
+				System.out.println(impresionEstudiante);
+			} else {
+				break;
+			}
+			
+		}
+		
+	}
+
+	public void crearSemestreAEstudiante() {
+
+		String codigoEstudiante;
+
+
+		System.out.println("Ingrese el codigo del estudiante al que le vamos a crear el semestre: ");
+
+		codigoEstudiante = reader.nextLine();
+
+		String nombrePeriodoSemestre;
+
+		System.out.println("Ingrese el nombre del periodo del semestre: ");
+
+		nombrePeriodoSemestre = reader.nextLine();
+
+		cont.asociarSemestreConEstudiante(cont.buscarEstudiantePorCodigo(codigoEstudiante), cont.crearSemestre(nombrePeriodoSemestre));
+
+
+
+	}
+
+	public void imprimirSemestresDeEstudiante() {
+
+		String codigoEstudiante;
+
+		System.out.println("Ingrese el codigo del estudiante al que le vamos a averiguar el semestre: ");
+
+		codigoEstudiante = reader.nextLine();
+
+
+
+		for(int i = 0; i <= cont.buscarEstudiantePorCodigo(codigoEstudiante).cuantosSemestres(); i++) {
+			String impresionEstudiante = cont.listarSemestre(i, cont.buscarEstudiantePorCodigo(codigoEstudiante));
+			if(impresionEstudiante != "") {
+				System.out.println(impresionEstudiante);
+			} else {
+				break;
+			}
+			
+		}
+		
 	}
 
 

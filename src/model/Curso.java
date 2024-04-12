@@ -7,11 +7,10 @@ public class Curso {
     private String facultad;
     private Profesor profesor;
 
-    public Curso(String nombreCurso, int creditos, String facultad, Profesor profesor) {
+    public Curso(String nombreCurso, int creditos, String facultad) {
         this.nombreCurso = nombreCurso;
         this.creditos = creditos;
         this.facultad = facultad;
-        this.profesor = profesor;
     }
 
 
