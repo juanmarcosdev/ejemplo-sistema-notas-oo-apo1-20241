@@ -66,7 +66,7 @@ public class Executable {
 	public void registrarEstudiante() {
 		
 		String nombreEstudiante, codigoEstudiante;
-		int edadEstudiante;
+		int edadEstudiante, decisionBarrioEstudiante;
 		
 		System.out.println("Ingrese nombre del estudiante: ");
 		
@@ -82,13 +82,17 @@ public class Executable {
 		
 		codigoEstudiante = reader.nextLine();
 		
+		System.out.println("Ingrese el codigo del barrio del estudiante, 1 para Norte, 2 para Sur, 3 para Oriente, 4 para Occidente y digite 5 si el estudiante vive fuera de Cali: ");
+		
+		decisionBarrioEstudiante = reader.nextInt();
+		
 		//System.out.println("Datos del estudiante: \n" + 
 		//"Nombre: " + nombreEstudiante + "\n" + 
 		//"Edad: " + edadEstudiante + "\n" + 
 		//"Codigo: " + codigoEstudiante);
 		
 		
-		cont.agregarEstudiante(cont.crearEstudiante(nombreEstudiante, edadEstudiante, codigoEstudiante));
+		cont.agregarEstudiante(cont.crearEstudiante(nombreEstudiante, edadEstudiante, codigoEstudiante, cont.retornaTipoDeBarrio(decisionBarrioEstudiante)));
 	}
 
 	public void imprimirEstudiantes() {
@@ -98,6 +102,7 @@ public class Executable {
 		for(int i = 0; i <= cantidadEstudiantes; i++) {
 			String impresionEstudiante = cont.listarEstudiante(i);
 			if(impresionEstudiante != "") {
+				System.out.println("Estudiante " + (i+1) + ": "); 
 				System.out.println(impresionEstudiante);
 			} else {
 				break;
