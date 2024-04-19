@@ -13,8 +13,8 @@ public class Controladora {
     	return profesor;
     }
 
-    public Curso crearCurso(String nombreCurso, int creditos, String facultad) {
-    	Curso curso = new Curso(nombreCurso, creditos, facultad);
+    public Curso crearCurso(String nombreCurso, int notaObtenida, int creditos, String facultad) {
+    	Curso curso = new Curso(nombreCurso, notaObtenida, creditos, facultad);
     	return curso;
     }
 

@@ -8,8 +8,9 @@ public class Curso {
     private String facultad;
     private Profesor profesor;
 
-    public Curso(String nombreCurso, int creditos, String facultad) {
+    public Curso(String nombreCurso, int notaObtenida, int creditos, String facultad) {
         this.nombreCurso = nombreCurso;
+        this.notaObtenida = notaObtenida;
         this.creditos = creditos;
         this.facultad = facultad;
     }
