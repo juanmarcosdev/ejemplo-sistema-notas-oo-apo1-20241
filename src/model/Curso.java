@@ -3,6 +3,7 @@ import model.Profesor;
 
 public class Curso {
     private String nombreCurso;
+    private int notaObtenida;
     private int creditos;
     private String facultad;
     private Profesor profesor;
@@ -11,6 +12,14 @@ public class Curso {
         this.nombreCurso = nombreCurso;
         this.creditos = creditos;
         this.facultad = facultad;
+    }
+
+    public int getNota() {
+        return notaObtenida;
+    }
+
+    public void setNota(int nota) {
+        this.notaObtenida = nota;
     }
 
 
