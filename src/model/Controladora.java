@@ -27,8 +27,8 @@ public class Controladora {
     	semestre.agregarCurso(curso);
     }
 
-    public Estudiante crearEstudiante(String nombre, int edad, String codigoEstudiante, Barrio barrioEstudiante) {
-    	Estudiante estudiante = new Estudiante(nombre, edad, codigoEstudiante, barrioEstudiante);
+    public Estudiante crearEstudiante(String nombre, int edad, String codigoEstudiante) {
+    	Estudiante estudiante = new Estudiante(nombre, edad, codigoEstudiante);
     	return estudiante;
     }
 
@@ -54,8 +54,7 @@ public class Controladora {
             Estudiante estudiante = estudiantes[indice];
             return "Nombre: " + estudiante.getNombre() + "\n" +
                    "Edad: " + estudiante.getEdad() + "\n" +
-                   "Código de Estudiante: " + estudiante.getCodigoEstudiante() + "\n" +
-				   "Zona: " + estudiante.getBarrio().toString();
+                   "Código de Estudiante: " + estudiante.getCodigoEstudiante();
         } else {
             return "";
         }
@@ -83,30 +82,6 @@ public class Controladora {
             return "";
         }
     }
-	
-	public Barrio retornaTipoDeBarrio(int decision) {
-		Barrio barrioEnum = Barrio.NORTE;
-		switch (decision) {
-					case 1:
-						barrioEnum = Barrio.NORTE;
-						break;
-					case 2:
-						barrioEnum = Barrio.SUR;
-						break;
-					case 3:
-						barrioEnum = Barrio.ORIENTE;
-						break;
-					case 4:
-						barrioEnum = Barrio.OCCIDENTE;
-						break;
-					case 5:
-						barrioEnum = Barrio.FUERA_DE_CALI;
-						break;
-					default:
-						System.out.print("Por favor ingrese una opcion valida");
-			}
-		return barrioEnum;
-	}
 	
 
 }
